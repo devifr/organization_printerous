@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container-fluid">
+      <%= render partial: 'pages/navbar' %>
+      <%= render partial: 'pages/alert' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
