@@ -10,6 +10,7 @@
 config/database.yml
 
 # Ignore all logfiles and tempfiles.
+/public/*
 /log/*
 /tmp/*
 !/log/.keep
