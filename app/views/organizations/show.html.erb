@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Detail <%= @organization.name %></h3>
+  </div>
+  <div class="card-body">
+    <div><%= image_tag @organization.logo.url(:thumb) %></div>
+    <div>Name : <%= @organization.name %></div>
+    <div>Email : <%= @organization.email %></div>
+    <div>Phone : <%= @organization.phone %></div>
+    <div>Website : <%= @organization.website %></div>
+    <h3>List PIC</h3>
+    <%= link_to 'Add New', new_organization_pic_path(@organization), class: "btn btn-primary pull-right" %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>No</td>
+          <td>Nama</td>
+          <td>Email</td>
+          <td>Phone</td>
+          <td>Avatar</td>
+          <% if current_user.organization_id == @organization.id %>
+            <td>Action</td>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pics.each.with_index(1) do |pic,no| %>
+          <tr>
+            <td><%= no %></td>
+            <td><%= pic.name %></td>
+            <td><%= pic.email %></td>
+            <td><%= pic.phone %></td>
+            <td><%= image_tag pic.avatar.url(:thumb) %></td>
+            <% if current_user.organization_id == @organization.id %>
+              <td>
+                <%= link_to 'Edit', edit_organization_pic_path(@organization,pic), class: "btn btn-success" %>
+                <%= link_to 'Delete', organization_pic_path(@organization,pic), method: "delete", class: "btn btn-danger", data: { confirm: 'Are You Sure'} %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
