@@ -1,0 +1,30 @@
+<div class="card">
+  <% if @pics.present? %>
+    <div class="card-header">
+      <h3> Result Searching Person </h3>
+    </div>
+    <div class="card-body">
+      <ol>
+        <% @pics.each do |pic| %>
+          <li>
+            <%= link_to pic.name, edit_organization_pic_path(pic.organization_id, pic.id) %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  <% end %>
+  <% if @organizations.present? %>
+    <div class="card-header">
+      <h3> Result Searching Organization </h3>
+    </div>
+    <div class="card-body">
+      <ol>
+        <% @organizations.each do |org| %>
+          <li>
+            <%= link_to org.name, organization_path(org) %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  <% end %>
+</div>
