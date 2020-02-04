@@ -1,0 +1,10 @@
+default: &default
+  adapter: postgresql
+  encoding: utf-8
+  pool: 30
+  username: mira
+  host: localhost
+
+development:
+  <<: *default
+  database: organization_flip
